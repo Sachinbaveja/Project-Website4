@@ -1,0 +1,22 @@
+import urllib
+# Get master directory
+speech_dir ="https://raw.githubusercontent.com/PedramNavid/trump_speeches/master/data/"
+# Iterate through all speeches in directory, from 00 to 73
+cur_speech = 0
+temp=str(cur_speech)
+end_speech = 73
+while (cur_speech <= end_speech):
+    # Change the speech you want to get
+    if(cur_speech<10):
+        temp="0"+str(cur_speech)
+    else:
+        temp=str(cur_speech)
+    speech_nm = (speech_dir+'speech_' + temp +'.txt')
+    print(speech_nm)
+    response = urllib.request.urlopen(speech_nm)
+    # Do what you need to with the speech
+    Text = response.read()
+    Text = Text.decode("utf-8")
+    print(Text)
+    # Update to the new speech
+    cur_speech +=1    
